@@ -6,6 +6,9 @@
     "paths": {
       "data": [
         "./dist/data"
+      ],
+      "ui": [
+        "./dist/ui"
       ]
     },
     "outDir": "./dist/out-tsc",
