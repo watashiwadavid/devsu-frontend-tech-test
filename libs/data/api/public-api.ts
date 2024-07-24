@@ -1,1 +1,1 @@
-export * from './config';
+export { provideApi, DevsuApiConfig } from './config';
