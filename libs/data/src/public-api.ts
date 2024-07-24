@@ -2,4 +2,4 @@
  * Public API Surface of data
  */
 
-export * from './config';
+export const DEVSU_DATA_LAYER = 'DEVSU_DATA_LAYER';
