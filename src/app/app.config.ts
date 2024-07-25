@@ -1,10 +1,10 @@
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideApi } from '@devsu/data/api';
 
-import { routes } from './app.routes';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideApi } from '../../dist/data/api';
 import { environment } from '../environments/environment';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
