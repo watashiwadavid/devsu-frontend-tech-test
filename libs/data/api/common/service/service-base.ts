@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { DEVSU_API_CONFIG, DevsuApiConfig } from '../../config';
 import {
   catchError,
   lastValueFrom,
-  map,
-  pipe,
   Subject,
   takeUntil,
   throwError,
   timeout,
 } from 'rxjs';
-import { ApiListResult } from '../models/api-list-result.model';
+import { DEVSU_API_CONFIG, DevsuApiConfig } from '../../config';
+import { ApiSuccessResult } from '../models/api-success-result.model';
 
 export class ApiServiceBase<T, K = number> {
   private http = inject(HttpClient);
@@ -35,10 +33,9 @@ export class ApiServiceBase<T, K = number> {
    * Query Methods
    ***************************** */
 
-  public async exists(id: K): Promise<boolean> {
+  public async getAll(): Promise<ApiSuccessResult<T[]>> {
     return lastValueFrom(
-      this.http.get<boolean>(`${this.url}/verification/${id}`).pipe(
-        // map((x) => x.data),
+      this.http.get<ApiSuccessResult<T[]>>(this.url).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
@@ -48,10 +45,21 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async getAll(): Promise<T[]> {
+  public async getById(id: K): Promise<ApiSuccessResult<T>> {
     return lastValueFrom(
-      this.http.get<ApiListResult<T>>(this.url).pipe(
-        map((x) => x.data),
+      this.http.get<ApiSuccessResult<T>>(`${this.url}/${id}`).pipe(
+        timeout(5000),
+        catchError(() => {
+          return throwError(() => new Error('Error during HTTP request'));
+        }),
+        takeUntil(this.unsubscriber)
+      )
+    );
+  }
+
+  public async exists(id: K): Promise<boolean> {
+    return lastValueFrom(
+      this.http.get<boolean>(`${this.url}/verification/${id}`).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
@@ -65,10 +73,9 @@ export class ApiServiceBase<T, K = number> {
    * Action Methods
    ***************************** */
 
-  public async create(t: T): Promise<T> {
+  public async create(t: T): Promise<ApiSuccessResult<T>> {
     return lastValueFrom(
-      this.http.post<T>(this.url, t).pipe(
-        // map((x) => x.data),
+      this.http.post<ApiSuccessResult<T>>(this.url, t).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
@@ -78,10 +85,9 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async edit(id: K, t: Omit<T, 'id'>) {
+  public async edit(id: K, t: Omit<T, 'id'>): Promise<ApiSuccessResult<T>> {
     return lastValueFrom(
-      this.http.put<T>(`${this.url}/${id}`, t).pipe(
-        // map((x) => x.data),
+      this.http.put<ApiSuccessResult<T>>(`${this.url}/${id}`, t).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
@@ -91,10 +97,9 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async delete(id: K) {
+  public async delete(id: K): Promise<Pick<ApiSuccessResult<T>, 'message'>> {
     return lastValueFrom(
-      this.http.delete<T>(`${this.url}/${id}`).pipe(
-        // map((x) => x.data),
+      this.http.delete<ApiSuccessResult<T>>(`${this.url}/${id}`).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
