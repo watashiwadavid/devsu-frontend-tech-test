@@ -1,1 +1,16 @@
-<p>product-form works!</p>
+<h3>Formulario de Registro</h3>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" (reset)="onReset()">
+  <div class="inputs-container">
+    <input type="text" placeholder="ID" />
+    <input type="text" placeholder="Nombre" />
+    <input type="text" placeholder="Descripción" />
+    <input type="text" placeholder="Logo" />
+    <input type="date" placeholder="Fecha Liberación" />
+    <input type="date" placeholder="Fecha Revisión" />
+  </div>
+  <div>
+    <button type="reset" [disabled]="form.pristine">Reiniciar</button>
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+  </div>
+</form>

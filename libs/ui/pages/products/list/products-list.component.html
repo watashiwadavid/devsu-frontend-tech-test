@@ -1,1 +1,8 @@
 <p>products-list works!</p>
+
+<button routerLink="/products/create">Agregar</button>
+
+@for (product of products(); track $index) {
+
+<p>{{ product.name }}</p>
+}

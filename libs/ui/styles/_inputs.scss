@@ -1,0 +1,68 @@
+@mixin apply-theme() {
+  // Variables de colores
+  $primary-color: #3498db;
+  $secondary-color: #2ecc71;
+  $error-color: #e74c3c;
+  $background-color: #f2f2f2;
+  $border-color: #ccc;
+  $focus-color: $primary-color;
+  $text-color: #333;
+
+  // Estilos para inputs
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    background-color: $background-color;
+    color: $text-color;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: $focus-color;
+      box-shadow: 0 0 8px rgba($focus-color, 0.2);
+      outline: none;
+    }
+
+    &.error {
+      border-color: $error-color;
+      box-shadow: 0 0 8px rgba($error-color, 0.2);
+    }
+
+    &.success {
+      border-color: $secondary-color;
+      box-shadow: 0 0 8px rgba($secondary-color, 0.2);
+    }
+
+    &:disabled {
+      background-color: darken($background-color, 10%);
+      color: lighten($text-color, 30%);
+      cursor: not-allowed;
+    }
+  }
+
+  // Estilos para labels
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  // Estilos para mensajes de error
+  .error-message {
+    color: $error-color;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  // Estilos para mensajes de éxito
+  .success-message {
+    color: $secondary-color;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}

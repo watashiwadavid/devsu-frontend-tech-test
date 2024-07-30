@@ -1,0 +1,5 @@
+@use "./inputs" as input-theme;
+
+@mixin apply-devsu-theme() {
+  @include input-theme.apply-theme();
+}

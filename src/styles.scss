@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+@use "../libs/ui/styles" as theme;
+
+@include theme.apply-devsu-theme();
