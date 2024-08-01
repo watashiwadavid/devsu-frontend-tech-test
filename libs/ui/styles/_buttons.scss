@@ -1,0 +1,26 @@
+@mixin apply-theme() {
+  button {
+    all: unset;
+    padding: 1rem;
+    border: 1px solid gray;
+    cursor: pointer;
+    color: #1c3365;
+    border-radius: 5px;
+
+    &.primary {
+      background-color: #f5df66;
+    }
+
+    &.secondary {
+      background-color: #ececec;
+    }
+
+    &:disabled {
+      border: none;
+      color: gray;
+      opacity: 0.8;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

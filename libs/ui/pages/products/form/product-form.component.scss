@@ -1,4 +1,29 @@
+.card {
+  width: min(1080px, 90%);
+  margin: 5rem auto;
+}
+
 .inputs-container {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+
+.form-error {
+  color: red;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  font-weight: normal;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 4rem 2rem;
+}
+
+span {
+  font-weight: bold;
 }

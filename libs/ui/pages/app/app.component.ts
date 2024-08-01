@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'lib-app',
+  selector: 'app-root',
   standalone: true,
   imports: [RouterModule],
   templateUrl: './app.component.html',

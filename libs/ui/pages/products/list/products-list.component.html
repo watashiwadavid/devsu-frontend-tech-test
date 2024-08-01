@@ -1,8 +1,70 @@
-<p>products-list works!</p>
+<div class="page-content">
+  <div class="table-actions">
+    <input type="text" [(ngModel)]="filter" />
+    <button class="primary" routerLink="/products/create">Agregar</button>
+  </div>
 
-<button routerLink="/products/create">Agregar</button>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Logo</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Fecha de liberación</th>
+          <th>Fecha de revisión</th>
+        </tr>
+      </thead>
 
-@for (product of products(); track $index) {
+      <tbody>
+        @for (product of visibleProducts(); track $index) {
+        <tr>
+          <td>
+            <span
+              class="material-symbols-outlined"
+              [routerLink]="'/products/edit/' + product.id"
+            >
+              edit
+            </span>
+          </td>
+          <td>
+            <img class="product-logo" src="{{ product.logo }}" />
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.date_release }}</td>
+          <td>{{ product.date_revision }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 
-<p>{{ product.name }}</p>
-}
+  <div class="table-paging">
+    <div class="paginator">
+      <span
+        class="material-symbols-outlined"
+        *ngIf="currentPage() > 0"
+        (click)="prevPage()"
+      >
+        chevron_left
+      </span>
+      <span> {{ currentPage() + 1 + " / " + totalPages() }} </span>
+      <span
+        class="material-symbols-outlined"
+        *ngIf="currentPage() + 1 < totalPages()"
+        (click)="nextPage()"
+      >
+        chevron_right
+      </span>
+    </div>
+
+    <select [(ngModel)]="take">
+      <option [value]="2">2</option>
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="10">20</option>
+    </select>
+  </div>
+</div>

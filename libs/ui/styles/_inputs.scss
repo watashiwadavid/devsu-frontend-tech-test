@@ -9,14 +9,15 @@
   $text-color: #333;
 
   // Estilos para inputs
-  input {
+  input,
+  select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid $border-color;
     border-radius: 4px;
-    background-color: $background-color;
+    background-color: white; // $background-color;
     color: $text-color;
     font-size: 16px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -37,7 +38,7 @@
       box-shadow: 0 0 8px rgba($secondary-color, 0.2);
     }
 
-    &:disabled {
+    &:read-only {
       background-color: darken($background-color, 10%);
       color: lighten($text-color, 30%);
       cursor: not-allowed;

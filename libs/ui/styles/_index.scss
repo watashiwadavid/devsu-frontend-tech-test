@@ -1,5 +1,15 @@
+@use "./fonts" as fonts;
+
+@use "./buttons" as buttons-theme;
+@use "./card" as card-theme;
+@use "./core" as core-theme;
 @use "./inputs" as input-theme;
 
 @mixin apply-devsu-theme() {
+  @include fonts.apply-theme();
+
+  @include buttons-theme.apply-theme();
+  @include card-theme.apply-theme();
+  @include core-theme.apply-theme();
   @include input-theme.apply-theme();
 }

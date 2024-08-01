@@ -1,27 +1,67 @@
-# DevsuFrontendTechTest
+# App Prueba Técnica para devsu por David López
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+## Requisitos de Sistema
 
-## Development server
+- **Node.js**: 20.13.1
+- **npm**: 10.2.5
+- **Angular**: 18.0.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Descripción del Proyecto
 
-## Code scaffolding
+Esta aplicación está construida utilizando **Angular** .
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular**: Es un framework de desarrollo de aplicaciones web que permite crear aplicaciones robustas y escalables. Angular ofrece herramientas poderosas para la construcción de interfaces de usuario dinámicas y de alto rendimiento.
 
-## Build
+### Estructura del Proyecto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### ui: Capa de Presentación
 
-## Running unit tests
+Contiene las siguientes carpetas:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **app**: Pagina app root del aplicativo
+- **errors**: Paginas de control de excepciones.
+- **layouts**: Contenedores generales de uso compartido
+- **pages**: Páginas del aplicativo.
+- **styles**: estilos generales de la libreria
+- **src**: Archivos base y de configuración.
 
-## Running end-to-end tests
+#### data: Capa de Datos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Contiene las siguientes carpetas:
 
-## Further help
+- **api**: Generalidades de comunicacion con el api.
+- **api/common**: Archivos comunes de consumo de api
+- **api/config**: Archivos de configuración de la capa
+- **api/modules**: Servicios y recursos por cada modulo del api
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Cómo Ejecutar
+
+### Descargar el Repositorio
+
+Clona el repositorio en tu máquina local.
+
+### Instalar Dependencias
+
+Ejecuta el siguiente comando para instalar todas las dependencias necesarias:
+
+```bash
+npm install
+```
+
+### Ejecutar Web
+
+Ejecuta el siguiente comando para ejecutar la aplicación en un browser:
+
+```bash
+npx ng serve
+```
+
+abrir navegador en [http://localhost:4200/](http://localhost:4200/)
+
+### Compilar
+
+Ejecuta el siguiente comando para compilar la aplicación:
+
+```bash
+npx nd build  // compilar app angular
+```

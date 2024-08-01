@@ -45,9 +45,9 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async getById(id: K): Promise<ApiSuccessResult<T>> {
+  public async getById(id: K): Promise<T> {
     return lastValueFrom(
-      this.http.get<ApiSuccessResult<T>>(`${this.url}/${id}`).pipe(
+      this.http.get<T>(`${this.url}/${id}`).pipe(
         timeout(5000),
         catchError(() => {
           return throwError(() => new Error('Error during HTTP request'));
@@ -57,7 +57,7 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async exists(id: K): Promise<boolean> {
+  public async validateId(id: K): Promise<boolean> {
     return lastValueFrom(
       this.http.get<boolean>(`${this.url}/verification/${id}`).pipe(
         timeout(5000),
@@ -85,7 +85,7 @@ export class ApiServiceBase<T, K = number> {
     );
   }
 
-  public async edit(id: K, t: Omit<T, 'id'>): Promise<ApiSuccessResult<T>> {
+  public async edit(id: K, t: T): Promise<ApiSuccessResult<T>> {
     return lastValueFrom(
       this.http.put<ApiSuccessResult<T>>(`${this.url}/${id}`, t).pipe(
         timeout(5000),

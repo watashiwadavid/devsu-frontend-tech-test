@@ -16,7 +16,7 @@ export const productsRoutes: Routes = [
       ),
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     loadComponent: () =>
       import('./form/product-form.component').then(
         (c) => c.ProductFormComponent

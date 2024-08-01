@@ -6,7 +6,7 @@ import { Product } from '../models/product.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsApiService extends ApiServiceBase<Product> {
+export class ProductsApiService extends ApiServiceBase<Product, string> {
   constructor() {
     super('/products');
   }

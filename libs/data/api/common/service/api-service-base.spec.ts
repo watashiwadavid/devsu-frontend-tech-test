@@ -65,7 +65,7 @@ describe('ApiServiceBase', () => {
   });
 
   it('should check if item exists', async () => {
-    service.exists(1).then((response) => {
+    service.validateId(1).then((response) => {
       expect(response).toBeTrue();
     });
 

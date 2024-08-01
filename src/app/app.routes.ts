@@ -3,13 +3,21 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'products',
-  },
+    loadComponent: () =>
+      import('@devsu/ui/layouts').then((l) => l.BaseLayoutComponent),
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'products',
+      },
 
-  {
-    path: 'products',
-    loadChildren: () => import('@devsu/ui/pages').then((m) => m.productsRoutes),
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('@devsu/ui/pages').then((m) => m.productsRoutes),
+      },
+    ],
   },
 
   {

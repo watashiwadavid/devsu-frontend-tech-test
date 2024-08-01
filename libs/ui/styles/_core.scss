@@ -1,0 +1,19 @@
+@mixin apply-theme() {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #f5f6fa;
+  }
+
+  header {
+    background-color: white;
+  }
+
+  .max-lg-screen {
+    max-width: 1024px;
+  }
+}

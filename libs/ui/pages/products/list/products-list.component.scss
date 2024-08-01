@@ -1,0 +1,65 @@
+.page-content {
+  width: min(1080px, 90%);
+  margin: 5rem auto;
+}
+
+.card {
+  overflow-x: auto;
+}
+
+.product-logo {
+  max-width: 3rem;
+  height: auto;
+  background-color: gray;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    max-width: 12rem;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  border-bottom: 1px solid gray;
+
+  th,
+  td {
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid #ececec;
+    text-align: center;
+  }
+}
+
+.table-paging {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    .material-symbols-outlined {
+      font-size: 3rem;
+      cursor: pointer;
+
+      &.disabled {
+        cursor: none;
+        pointer-events: none;
+      }
+    }
+  }
+
+  select {
+    max-width: 7rem;
+  }
+}

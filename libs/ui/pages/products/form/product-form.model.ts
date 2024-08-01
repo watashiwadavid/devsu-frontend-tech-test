@@ -2,35 +2,44 @@ import {
   date,
   maxLength,
   minLength,
+  notEmpty,
+  pattern,
+  prop,
   required,
   url,
 } from '@rxweb/reactive-form-validators';
 
 export class ProductForm {
-  @required()
-  @minLength({ value: 3 })
-  @maxLength({ value: 10 })
+  @notEmpty({ message: 'Campo requerido' })
+  @pattern({
+    expression: { alphanumeric: /^[a-zA-Z0-9]*$/ },
+    message: 'Caracteres no permitidos',
+  })
+  @minLength({ value: 3, message: 'Mínimo 3 caracteres' })
+  @maxLength({ value: 10, message: 'Máximo 10 caracteres' })
   id: string = '';
 
-  @required()
-  @minLength({ value: 5 })
-  @maxLength({ value: 100 })
+  @notEmpty({ message: 'Campo requerido' })
+  @minLength({ value: 6, message: 'Mínimo 6 caracteres' })
+  @maxLength({ value: 100, message: 'Máximo 100 caracteres' })
   name: string = '';
 
-  @required()
-  @minLength({ value: 10 })
-  @maxLength({ value: 200 })
+  @notEmpty({ message: 'Campo requerido' })
+  @minLength({ value: 10, message: 'Mínimo 10 caracteres' })
+  @maxLength({ value: 200, message: 'Máximo 200 caracteres' })
   description: string = '';
 
-  @required()
-  @url()
+  @notEmpty({ message: 'Campo requerido' })
+  @url({ message: 'Url no válida' })
   logo: string = '';
 
-  @required()
-  @date({})
-  releaseDate?: Date = undefined;
+  @notEmpty({ message: 'Campo requerido' })
+  releaseDate: string = '';
 
-  @required()
-  @date()
-  revisionDate?: Date = undefined;
+  @prop()
+  revisionDate: string = '';
+
+  constructor(obj?: Partial<ProductForm>) {
+    Object.assign(this, obj);
+  }
 }

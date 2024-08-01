@@ -8,6 +8,7 @@
       "@devsu/data/api": ["./libs/data/api/public-api.ts"],
       "@devsu/ui": ["./libs/ui"],
       "@devsu/ui/errors": ["./libs/ui/errors/public-api.ts"],
+      "@devsu/ui/layouts": ["./libs/ui/layouts/public-api.ts"],
       "@devsu/ui/pages": ["./libs/ui/pages/public-api.ts"]
     },
     "outDir": "./dist/out-tsc",
